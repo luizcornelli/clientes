@@ -3,6 +3,8 @@ package com.luizcornelli.controller;
 import java.net.URI;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +36,7 @@ public class ClienteController {
 	}
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public  ResponseEntity<Void> salvar(@RequestBody Cliente cliente) {
+	public  ResponseEntity<Void> salvar(@RequestBody @Valid Cliente cliente) {
 		
 		clienteRepository.save(cliente);
 		
