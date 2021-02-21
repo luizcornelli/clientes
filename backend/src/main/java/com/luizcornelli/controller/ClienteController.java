@@ -63,7 +63,7 @@ public class ClienteController {
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> update(@PathVariable Integer id, @RequestBody Cliente clienteAtualizado) {
+	public ResponseEntity<Void> update(@PathVariable Integer id, @RequestBody @Valid Cliente clienteAtualizado) {
 	
 		clienteRepository.findById(id)
 		.map( cliente -> {

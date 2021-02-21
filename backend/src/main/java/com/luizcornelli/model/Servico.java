@@ -31,7 +31,6 @@ public class Servico {
 	}
 
 	public Servico(Integer id, String descricao, BigDecimal valor, Cliente cliente) {
-		super();
 		this.id = id;
 		this.descricao = descricao;
 		this.valor = valor;

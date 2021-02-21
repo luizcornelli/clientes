@@ -39,7 +39,6 @@ public class Cliente {
 	}
 
 	public Cliente(Integer id, String nome, String cpf, LocalDate dataCadastro) {
-		super();
 		this.id = id;
 		this.nome = nome;
 		this.cpf = cpf;
