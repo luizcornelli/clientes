@@ -30,7 +30,7 @@ public class ClienteController {
 	public ResponseEntity<Cliente> find(@PathVariable Integer id) {
 
 		Cliente cliente = clienteRepository.findById(id).orElseThrow( 
-					() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+					() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado."));
 		
 		return ResponseEntity.ok(cliente);
 	}
@@ -57,7 +57,7 @@ public class ClienteController {
 			return Void.TYPE;
 		})
 		.orElseThrow( 
-				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado."));
 		
 		return ResponseEntity.noContent().build();
 	}
@@ -74,7 +74,7 @@ public class ClienteController {
 			return clienteRepository.save(cliente);
 		})
 		.orElseThrow( 
-				() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+				() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Cliente não encontrado."));
 		
 		return ResponseEntity.noContent().build();
 	}
