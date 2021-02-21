@@ -1,3 +1,4 @@
+import { SidebarComponent } from './template/sidebar/sidebar.component';
 import { TemplateModule } from './template/template.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
