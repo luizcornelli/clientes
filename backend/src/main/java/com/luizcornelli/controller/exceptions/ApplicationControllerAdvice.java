@@ -1,4 +1,4 @@
-package com.luizcornelli.controller;
+package com.luizcornelli.controller.exceptions;
 
 import java.util.List;
 import java.util.stream.Collectors;
