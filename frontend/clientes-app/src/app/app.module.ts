@@ -1,3 +1,4 @@
+import { ClientesModule } from './clientes/clientes.module';
 import { AppRoutingModule } from './app-routing.module';
 import { TemplateModule } from './template/template.module';
 import { NgModule } from '@angular/core';
@@ -13,8 +14,9 @@ import { HomeComponent } from './home/home.component';
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     TemplateModule,
-    AppRoutingModule
+    ClientesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
