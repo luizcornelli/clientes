@@ -1,6 +1,7 @@
 package com.luizcornelli.model;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,8 +11,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
-public class Servico {
+public class ServicoPrestado {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,17 +26,22 @@ public class Servico {
 	@Column
 	private BigDecimal valor;
 	
+	@Column
+    @JsonFormat(pattern = "dd/MM/yyyy")
+	private LocalDate data;
+	
 	@ManyToOne
 	@JoinColumn(name = "id_cliente")
 	private Cliente cliente;
 
-	public Servico() {
+	public ServicoPrestado() {
 	}
 
-	public Servico(Integer id, String descricao, BigDecimal valor, Cliente cliente) {
+	public ServicoPrestado(Integer id, String descricao, BigDecimal valor, LocalDate data, Cliente cliente) {
 		this.id = id;
 		this.descricao = descricao;
 		this.valor = valor;
+		this.data = data;
 		this.cliente = cliente;
 	}
 
@@ -60,7 +68,15 @@ public class Servico {
 	public void setValor(BigDecimal valor) {
 		this.valor = valor;
 	}
-	
+
+	public LocalDate getData() {
+		return data;
+	}
+
+	public void setData(LocalDate data) {
+		this.data = data;
+	}
+
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -85,7 +101,7 @@ public class Servico {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Servico other = (Servico) obj;
+		ServicoPrestado other = (ServicoPrestado) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
