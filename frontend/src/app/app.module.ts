@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { ServicoPrestadoService } from './servico-prestado.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import { HomeComponent } from './home/home.component';
     ClientesModule,
     ServicoPrestadoModule
   ],
-  providers: [ClientesService],
+  providers: [ClientesService, ServicoPrestadoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
