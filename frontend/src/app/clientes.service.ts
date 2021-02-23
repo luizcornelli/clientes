@@ -10,6 +10,11 @@ export class ClientesService {
 
   constructor(private httpCliente: HttpClient) { }
 
+  atualizar(cliente: Cliente): Observable<any> {
+
+    return this.httpCliente.put<Cliente>(`http://localhost:8090/clientes/${cliente.id}`, cliente)
+  }
+
   salvar(cliente: Cliente): Observable<Cliente> {
 
     return this.httpCliente.post<Cliente>('http://localhost:8090/clientes', cliente)
