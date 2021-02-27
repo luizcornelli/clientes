@@ -15,6 +15,7 @@ export class LoginComponent {
   loginError: boolean;
   cadastrando: boolean;
   mensagemSucesso: string;
+  errors: String[]
 
   constructor(private router: Router, private authService: AuthService) { }
 
@@ -28,7 +29,6 @@ export class LoginComponent {
   }
 
   cancelaCadastro(){
-
     this.cadastrando = false
   }
 
@@ -43,10 +43,17 @@ export class LoginComponent {
     .subscribe(response => {
 
       this.mensagemSucesso = "Cadastro realizado com sucesso. Efetue o seu login!"
-      this.loginError = false
-    }, error => {
-      this.loginError = true
+      this.errors = null
+
+      this.username = null
+      this.password = null
+      this.cadastrando = false
+      this.errors = null
+
+    }, errorResponse => {
+
       this.mensagemSucesso = null
+      this.errors = errorResponse.error.erros;
     })
   }
 }

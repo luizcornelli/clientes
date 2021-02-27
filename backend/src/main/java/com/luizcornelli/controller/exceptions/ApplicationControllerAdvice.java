@@ -29,7 +29,7 @@ public class ApplicationControllerAdvice {
 	@ExceptionHandler(ResponseStatusException.class)
 	public ResponseEntity handleResponseStatusException(ResponseStatusException responseStatusException) {
 		
-		String messagemErro = responseStatusException.getMessage();
+		String messagemErro = responseStatusException.getReason();
 		HttpStatus codigoStatus = responseStatusException.getStatus();
 		ApiErros apiErros = new ApiErros(messagemErro);
 		return new ResponseEntity(apiErros, codigoStatus);
