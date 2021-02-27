@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.luizcornelli.controller.exceptions.UsuarioCadastradoException;
 import com.luizcornelli.model.Usuario;
 import com.luizcornelli.repository.UsuarioRepository;
 
@@ -27,5 +28,16 @@ public class UsuarioService implements UserDetailsService {
 					.password(usuario.getPassword())
 					.roles("USER").build();
 	}
-
+	
+	public Usuario salvar(Usuario usuario) {
+		
+		boolean exists = usuarioRepository.existsByUsername(usuario.getUsername());
+		
+		if(exists) {
+			
+			throw new UsuarioCadastradoException(usuario.getUsername());
+		}
+		
+		return usuarioRepository.save(usuario);
+	}
 }
