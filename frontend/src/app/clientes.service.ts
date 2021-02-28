@@ -20,26 +20,12 @@ export class ClientesService {
 
   salvar(cliente: Cliente): Observable<Cliente> {
 
-    const tokenString = localStorage.getItem('access_token')
-    const token = JSON.parse(tokenString)
-
-    const headers = {
-      'Authorization': 'Bearer ' + token.access_token
-    }
-
-    return this.httpCliente.post<Cliente>(`${this.apiURL}/`, cliente, { headers })
+    return this.httpCliente.post<Cliente>(`${this.apiURL}/`, cliente)
   }
 
   getClientes(): Observable<Cliente[]> {
 
-    const tokenString = localStorage.getItem('access_token')
-    const token = JSON.parse(tokenString)
-
-    const headers = {
-      'Authorization': 'Bearer ' + token.access_token
-    }
-
-    return this.httpCliente.get<Cliente[]>(this.apiURL, { headers })
+    return this.httpCliente.get<Cliente[]>(this.apiURL)
   }
 
   getClienteById(id: number): Observable<Cliente>{
